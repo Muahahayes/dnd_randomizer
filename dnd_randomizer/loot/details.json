@@ -1,0 +1,172 @@
+[
+    [
+        "Athletics Skill when climbing.",
+        "Athletics Skill when swimming.",
+        "Athletics Skill when lifting.",
+        "Athletics Skill when grappling.",
+        "Acrobatics Skill when grappling.",
+        "Acrobatics Skill when balancing.",
+        "Acrobatics Skill when performing a stunt.",
+        "Sleight of Hand Skill when picking a pocket.",
+        "Sleight of Hand Skill when picking a lock/trap.",
+        "Stealth Skill when hiding from sight.",
+        "Stealth Skill when concealing your sounds.",
+        "Arcana Skill when trying to understand a spell/effect.",
+        "Arcana Skill when trying to read magical writings",
+        "Arcana Skill when testing your knowledge of creatures.",
+        "History Skill with contemporary knowledge.",
+        "History Skill with historical knowledge",
+        "Investigation Skill when looking for clues.",
+        "Investigation Skill when reading.",
+        "Nature Skill with topographical information.",
+        "Nature Skill with biological/zoological information.",
+        "Religion Skill for knowledge of sects.",
+        "Religion Skill for knowledge of the divine.",
+        "Animal Handling Skill with domestic animals.",
+        "Animal Handling Skill with wild animals.",
+        "Insight Skill when checking for a lie.",
+        "Insight Skill when not used for checking for a lie.",
+        "Medicine Skill when diagnosing an illness.",
+        "Medicine Skill when treating a stable creature.",
+        "Medicine Skill when stabalizing a creature.",
+        "Perception Skill when hearing a sound.",
+        "Perception Skill when seeing something concealed.",
+        "Perception Skill when testing general awareness.",
+        "Survival Skill when following tracks.",
+        "Survival Skill when travelling terrain.",
+        "Survival Skill when hunting wild game.",
+        "Deception Skill when lying.",
+        "Deception Skill when in a disguise.",
+        "Intimidation Skill when using violent threats.",
+        "Intimidation Skill when using non-violent threats.",
+        "Performance Skill with music.",
+        "Performance Skill with dance.",
+        "Performance Skill with acting/storytelling.",
+        "Persuasion Skill when speaking to an individual.",
+        "Persuasion Skill when speaking to a group."
+    ],
+    [
+        "Acid damage.",
+        "Bludgeoning damage.",
+        "Cold damage.",
+        "Fire damage.",
+        "Force damage.",
+        "Lightning damage.",
+        "Necrotic damage.",
+        "Piercing damage.",
+        "Poison damage.",
+        "Psychic damage.",
+        "Radiant damage.",
+        "Slashing damage.",
+        "Thunder damage"
+    ],
+    [
+        "Right Arm",
+        "Left Arm",
+        "Right Leg",
+        "Left Leg",
+        "Right Hand",
+        "Left Hand",
+        "Tongue",
+        "Sphincter",
+        "Urinary Tract",
+        "Pinky Fingers",
+        "Thumbs"
+    ],
+    [
+        "Alert",
+        "Athlete",
+        "Actor",
+        "Blade Master",
+        "Charger",
+        "Crossbow Expert",
+        "Defensive Duelist",
+        "Dual Wielder",
+        "Dungeon Delver",
+        "Durable",
+        "Elemental Adept",
+        "Fell Handed",
+        "Flail Mastery",
+        "Grappler",
+        "Great Weapon Master",
+        "Gunslinger",
+        "Healer",
+        "Heavily Armored",
+        "Heavy Armor Master",
+        "Inspiring Leader",
+        "Keen Mind",
+        "Lightly Armored",
+        "Linguist",
+        "Lucky",
+        "Mage Slayer",
+        "Magic Initiate",
+        "Martial Adept",
+        "Medium Armor Master",
+        "Mobile",
+        "Moderately Armored",
+        "Mounted Combatant",
+        "Observant",
+        "Polearm Master",
+        "Resilient",
+        "Ritual Caster",
+        "Savage Attacker",
+        "Sentinel",
+        "Sharpshooter",
+        "Shield Master",
+        "Skilled",
+        "Skulker",
+        "Spear Mastery",
+        "Spell Sniper",
+        "Tavern Brawler",
+        "Tough",
+        "War Caster",
+        "Warhammer Master",
+        "Weapon Master"
+    ],
+    [
+        "Strength",
+        "Dexterity",
+        "Constitution",
+        "Intelligence",
+        "Wisdom",
+        "Charisma"
+    ],
+    [
+        {
+            "type":"Wood",
+            "cost":1
+        },
+        {
+            "type":"Iron",
+            "cost":10
+        },
+        {
+            "type":"Steel",
+            "cost":50
+        },
+        {
+            "type":"Copper",
+            "cost":30
+        },
+        {
+            "type":"Silver",
+            "cost":100
+        },
+        {
+            "type":"Gold",
+            "cost":200
+        },
+        {
+            "type":"Bronze",
+            "cost":50
+        },
+        {
+            "type":"Bone",
+            "cost":10
+        },
+        {
+            "type":"Obsidian",
+            "cost":75
+        }
+    ]
+]

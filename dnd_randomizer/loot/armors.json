@@ -1,0 +1,93 @@
+[
+    {
+        "name":"Padded",
+        "cost":5,
+        "AC":"11 + Dex",
+        "stealth":"Disadvantage",
+        "strength": ""
+    },
+    {
+        "name":"Leather",
+        "cost":10,
+        "AC":"11 + Dex",
+        "stealth":"",
+        "strength": ""
+    },
+    {
+        "name":"Studded Leather",
+        "cost":45,
+        "AC":"12 + Dex",
+        "stealth":"",
+        "strength": ""
+    },
+    {
+        "name":"Hide",
+        "cost":10,
+        "AC":"12 + Dex (Max 2)",
+        "stealth":"",
+        "strength": ""
+    },
+    {
+        "name":"Chain Shirt",
+        "cost":50,
+        "AC":"14 + Dex (Max 2)",
+        "stealth":"",
+        "strength": ""
+    },
+    {
+        "name":"Scale Mail",
+        "cost":50,
+        "AC":"14 + Dex (Max 2)",
+        "stealth":"Disadvantage",
+        "strength": ""
+    },
+    {
+        "name":"Breastplate",
+        "cost":400,
+        "AC":"14 + Dex (Max 2)",
+        "stealth":"",
+        "strength": ""
+    },
+    {
+        "name":"Half Plate",
+        "cost":750,
+        "AC":"15 + Dex (Max 2)",
+        "stealth":"Disadvantage",
+        "strength": ""
+    },
+    {
+        "name":"Ring Mail",
+        "cost":30,
+        "AC":"14",
+        "stealth":"Disadvantage",
+        "strength": ""
+    },
+    {
+        "name":"Chain Mail",
+        "cost":75,
+        "AC":"16",
+        "stealth":"Disadvantage",
+        "strength":13
+    },
+    {
+        "name":"Splint",
+        "cost":200,
+        "AC":"17",
+        "stealth":"Disadvantage",
+        "strength":15
+    },
+    {
+        "name":"Plate",
+        "cost":1500,
+        "AC":"18",
+        "stealth":"Disadvantage",
+        "strength":15
+    },
+    {
+        "name":"Shield",
+        "cost":10,
+        "AC":"+2",
+        "stealth":"",
+        "strength": ""
+    }
+]

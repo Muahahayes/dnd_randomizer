@@ -1,0 +1,149 @@
+[
+    [
+        "Common",
+        "Elven",
+        "Abyssal",
+        "Aquan",
+        "Auran",
+        "Celestial",
+        "Undercommon",
+        "Terran",
+        "Sylvan",
+        "Primordial",
+        "Orc",
+        "Infernal",
+        "Ignan",
+        "Halfling",
+        "Gnoll",
+        "Goblin",
+        "Gnomish",
+        "Giant",
+        "Dwarvish",
+        "Draconic",
+        "Deep Speech"
+    ],
+    [
+        "Alert",
+        "Athlete",
+        "Actor",
+        "Blade Master",
+        "Charger",
+        "Crossbow Expert",
+        "Defensive Duelist",
+        "Dual Wielder",
+        "Dungeon Delver",
+        "Durable",
+        "Elemental Adept",
+        "Fell Handed",
+        "Flail Mastery",
+        "Grappler",
+        "Great Weapon Master",
+        "Gunslinger",
+        "Healer",
+        "Heavily Armored",
+        "Heavy Armor Master",
+        "Inspiring Leader",
+        "Keen Mind",
+        "Lightly Armored",
+        "Linguist",
+        "Lucky",
+        "Mage Slayer",
+        "Magic Initiate",
+        "Martial Adept",
+        "Medium Armor Master",
+        "Mobile",
+        "Moderately Armored",
+        "Mounted Combatant",
+        "Observant",
+        "Polearm Master",
+        "Resilient",
+        "Ritual Caster",
+        "Savage Attacker",
+        "Sentinel",
+        "Sharpshooter",
+        "Shield Master",
+        "Skilled",
+        "Skulker",
+        "Spear Mastery",
+        "Spell Sniper",
+        "Tavern Brawler",
+        "Tough",
+        "War Caster",
+        "Warhammer Master",
+        "Weapon Master"
+    ],
+    [
+        {
+            "name":"Athletics",
+            "mod":"Strength"
+        },
+        {
+            "name":"Acrobatics",
+            "mod":"Dexterity"
+        },
+        {
+            "name":"Sleight of Hand",
+            "mod":"Dexterity"
+        },
+        {
+            "name":"Stealth",
+            "mod":"Dexterity"
+        },
+        {
+            "name":"Arcana",
+            "mod":"Intelligence"
+        },
+        {
+            "name":"History",
+            "mod":"Intelligence"
+        },
+        {
+            "name":"Investigation",
+            "mod":"Intelligence"
+        },
+        {
+            "name":"Nature",
+            "mod":"Intelligence"
+        },
+        {
+            "name":"Religion",
+            "mod":"Intelligence"
+        },
+        {
+            "name":"Animal Handling",
+            "mod":"Wisdom"
+        },
+        {
+            "name":"Insight",
+            "mod":"Wisdom"
+        },
+        {
+            "name":"Medicine",
+            "mod":"Wisdom"
+        },
+        {
+            "name":"Perception",
+            "mod":"Wisdom"
+        },
+        {
+            "name":"Survival",
+            "mod":"Wisdom"
+        },
+        {
+            "name":"Deception",
+            "mod":"Charisma"
+        },
+        {
+            "name":"Intimidation",
+            "mod":"Charisma"
+        },
+        {
+            "name":"Performance",
+            "mod":"Charisma"
+        },
+        {
+            "name":"Persuasion",
+            "mod":"Charisma"
+        }
+    ]
+]

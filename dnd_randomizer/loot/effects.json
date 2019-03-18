@@ -1,0 +1,116 @@
+[
+    [
+        {
+            "effect":"+# to the ?",
+            "curse":"-# to the ?"
+        },
+        {
+            "effect":"+% to currency found.",
+            "curse":null
+        },
+        {
+            "effect":"+% to Experience gained.",
+            "curse":null
+        },
+        {
+            "effect":"-# hours of Sleep needed for a Long Rest.",
+            "curse":null
+        },
+        {
+            "effect":"+# to your number of Health Dice.",
+            "curse":null
+        },
+        {
+            "effect":"You may change your hair color at will.",
+            "curse":null
+        },
+        {
+            "effect":"You may change your height # times per day. (Within your race's limits)",
+            "curse":null
+        },
+        {
+            "effect":"You may change your face and skin color once per day. (While looking like your race)",
+            "curse":1
+        },
+        {
+            "effect":"+# to your Spell DC.",
+            "curse":1
+        },
+        {
+            "effect":"+# to your AC vs $",
+            "curse":"-# to your AC vs $"
+        },
+        {
+            "effect":"-# damage taken from $",
+            "curse":"+# damage taken from $"
+        },
+        {
+            "effect":"Gain the Feat @",
+            "curse":1
+        },
+        {
+            "effect":"+1 damage dice.",
+            "curse":1
+        },
+        {
+            "effect":"+# to $",
+            "curse":null
+        },
+        {
+            "effect":"+# to Attack Rolls.",
+            "curse":"-# to AC"
+        },
+        {
+            "effect":"+# to ^ Saving Throws.",
+            "curse":"-# to ^ Saving Throws."
+        },
+        {
+            "effect":"+# to your Max HP",
+            "curse":null
+        }
+    ],
+    [
+        {
+            "curse":"You are now blind."
+        },
+        {
+            "curse":"You are now mute."
+        },
+        {
+            "curse":"You are now deaf."
+        },
+        {
+            "curse":"Your ! is now Paralyzed."
+        },
+        {
+            "curse":"-# to your Max HP."
+        },
+        {
+            "curse":"-# to your Proficiency Bonus"
+        },
+        {
+            "curse":"After a Long Rest you forget the previous day."
+        },
+        {
+            "curse":"You no longer are proficient in a random Proficiency"
+        },
+        {
+            "curse":"-% to currency found."
+        },
+        {
+            "curse":"+# damage taken from $"
+        },
+        {
+            "curse":"-# to your AC vs $"
+        },
+        {
+            "curse":"-# to AC"
+        },
+        {
+            "curse":"-# to ^ Saving Throws."
+        },
+        {
+            "curse":"-# to the ?"
+        }
+    ]
+]

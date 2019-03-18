@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Ring",
+        "cost":200
+    },
+    {
+        "name":"Amulet",
+        "cost":300
+    },
+    {
+        "name":"Bracelet",
+        "cost":150
+    },
+    {
+        "name":"Tiara",
+        "cost":400
+    },
+    {
+        "name":"Symbol",
+        "cost":100
+    },
+    {
+        "name":"Earring",
+        "cost":200
+    }
+]

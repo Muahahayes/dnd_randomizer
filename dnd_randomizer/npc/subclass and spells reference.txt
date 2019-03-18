@@ -1,0 +1,21 @@
+subclass [
+	name:"foo"
+	features:{
+		3:"foo",
+		6:"bar",
+	}
+	sub:[
+		"foo",
+		"bar"
+	]
+]
+
+
+spells:{
+	"mod":"foo",
+	"slots":[
+		[0,0],
+		[1,1]
+	]
+
+spells known = mod + lvl
