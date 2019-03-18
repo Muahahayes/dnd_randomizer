@@ -1,0 +1,15 @@
+desktop-js/loot/details.json
+desktop-js/loot/armors.json
+desktop-js/loot/effects.json
+desktop-js/loot/loot.js
+desktop-js/loot/misc.json
+desktop-js/loot/readme.md
+desktop-js/loot/weapons.json
+desktop-js/npc/class.json
+desktop-js/npc/feats.json
+desktop-js/npc/getSpells.js
+desktop-js/npc/info.json
+desktop-js/npc/npc.js
+desktop-js/npc/race.json
+desktop-js/npc/spells.json
+desktop-js/npc/subclass and spells reference.txt
