@@ -5,3 +5,5 @@ for (let row of rows) {
     spells.push(a[0].innerHTML)
 }
 spells
+
+// use in dndbeyond.com's spell search page to make the dev tool window print an array of all the spell names
