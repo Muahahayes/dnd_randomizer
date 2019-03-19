@@ -5,7 +5,19 @@ const info = JSON.parse(fs.readFileSync('./info.json','utf8'))
 const spells = JSON.parse(fs.readFileSync('./spells.json','utf8'))
 
 // args [minlevel, maxlevel, class, race, subclass] randomize any not given
-
+if (process.argv[2] && process.argv[2].includes('h')) {
+    console.log('--------------------------------------------------' +
+                '\nA D&D 5e character generator.' + 
+                '\nUsage: node npc.js # # c r s' +
+                '\nNo arguments will give a random character lv 1-20.' +
+                '\nArguments:' +
+                '\n# = min and max level range.' +
+                '\nc = class to generate' +
+                '\nr = race to generate' +
+                '\ns = subclass/school/domain to pick within class' +
+                '\n--------------------------------------------------')
+    process.exit()
+}
 let npc = {
     "race":{},
     "class":{},
@@ -23,24 +35,10 @@ let npc = {
     "skills":[],
     "features":[]
 }
-if (process.argv[2] && process.argv[2].includes('h')) {
-    console.log('--------------------------------------------------' +
-                '\nA D&D 5e character generator.' + 
-                '\nUsage: node npc.js # # c r s' +
-                '\nNo arguments will give a random character lv 1-20.' +
-                '\nArguments:' +
-                '\n# = min and max level range.' +
-                '\nc = class to generate' +
-                '\nr = race to generate' +
-                '\ns = subclass/school/domain to pick within class' +
-                '\n--------------------------------------------------')
-    process.exit()
-}
 rollNPC()
 
 
 function rollNPC() {
-    let npcStr = ''
     let min = 1
     let max = 20
     // check if level arg, if not random level 1-20 (weighted)
@@ -62,97 +60,9 @@ function rollNPC() {
     console.log()
 
     // build output string
-
-    // main stats
-    npcStr += ` ${npc.race.name} ${(npc.subrace)?'('+npc.subrace.name+')' : ''} ${npc.class.name} ${(npc.subclass)?'('+npc.subclass.name+')' : ''}    Level: ${npc.level}\n`
-            + `\n Str: ${npc.attributes.strength}  ${(npc.attributes.strength<10)?' ':''} Save: ${npc.saves.strength}${(npc.saves.strength >= 10 || npc.saves.strength < 0)?'      ':'       '}HP: ${npc.HP}`
-            + `\n Dex: ${npc.attributes.dexterity} ${(npc.attributes.dexterity<10)?' ':''}  Save: ${npc.saves.dexterity}${(npc.saves.dexterity >= 10 || npc.saves.dexterity < 0)?'      ':'       '}AC: ${npc.AC}`
-            + `\n Con: ${npc.attributes.constitution} ${(npc.attributes.constitution<10)?' ':''}  Save: ${npc.saves.constitution}${(npc.saves.constitution >= 10 || npc.saves.constitution < 0)?'      ':'       '}Proficiency: ${npc.proficiency}`
-            + `\n Int: ${npc.attributes.intelligence} ${(npc.attributes.intelligence<10)?' ':''}  Save: ${npc.saves.intelligence}${(npc.saves.intelligence >= 10 || npc.saves.intelligence < 0)?'      ':'       '}Initiative: ${npc.initiative}`
-            + `\n Wis: ${npc.attributes.wisdom}  ${(npc.attributes.wisdom<10)?' ':''} Save: ${npc.saves.wisdom}${(npc.saves.wisdom >= 10 || npc.saves.wisdom < 0)?'      ':'       '}Speed: ${npc.speed}`
-            + `\n Cha: ${npc.attributes.charisma} ${(npc.attributes.charisma<10)?' ':''}  Save: ${npc.saves.charisma}${(npc.saves.charisma >= 10 || npc.saves.charisma < 0)?'      ':'       '}Size: ${npc.size}`
-            + '\n'
-
-    // languages
-    let langStr = ''
-    for (let language of npc.languages) {
-        langStr += `${language},`
-    }
-    langStr = langStr.split(',')
-    langStr.pop()
-    langStr = langStr.join(', ')
-    npcStr += `\n Languages:\n ${langStr}\n`
-
-    // features
-    npcStr += `\n Features: `
-    for (let i=0; i<npc.features.length; i++) {
-        npcStr += `${npc.features[i]?'\n '+npc.features[i]:''}`+
-            `${(npc.features[++i])?', '+npc.features[i]:''}`+
-            `${(npc.features[++i])?', '+npc.features[i]:''}`+
-            `${(npc.features[++i])?', '+npc.features[i]:''}`
-    }
+    let npcStr = printNPC()
     
-    // subclass features
-    if (npc.subclass) {
-        npcStr += '\n\n Subclass Features:\n '
-        let subStr = []
-        let i = 0
-        for (let key in npc.subclass.features) {
-            if (npc.level >= key){
-                subStr.push(`${npc.subclass.features[key]?npc.subclass.features[key]:''}`)
-                if (((i+1) % 2) == 0) {
-                    subStr[i] += '\n '
-                    i++
-                }
-                else {
-                    subStr[i++] += ', '
-                }
-            }
-        }
-        subStr[i-1] = subStr[i-1].replace(',','')
-        npcStr += subStr.join('')
-    }
-
-    // skills
-    npcStr += `\n\n                Skills:`
-    for (let i=0; i<npc.skillScores.length/2; i++) {
-        let gap = ''
-        for (let j=0; j<20-npc.skillScores[i].name.split('').length; j++) {
-            gap += ' '
-        }
-        if (npc.skillScores[i].bonus >= 0) {
-            gap += ' '
-        }
-        npcStr += `\n ${npc.skillScores[i].name} : ${npc.skillScores[i].bonus} ${gap} ${npc.skillScores[i+(npc.skillScores.length/2)].name} : ${npc.skillScores[i+(npc.skillScores.length/2)].bonus}`
-    }
-
-    // TODO: refactor how to display spells
-    // This was done in a lost version I overwrote by accident :'(
-
-    // example
-    // Level  Slots  Spells
-    //  0      n/a    Firebolt, Minor Illusion, Prestidigitation, Blade Ward
-    //                Light, Mage Hand
-    //  1      3      Magic Missile, Charm Person, Detect Magic
-    //  2      1      Darkness
-
-    if (npc.spells[0][0] || npc.spells[1][0]) {
-        npcStr += `\n\n Spells: (${npc.class.spells.mod}) Attack: ${modifier(npc.attributes[npc.class.spells.mod]) + npc.proficiency} DC: ${8 + modifier(npc.attributes[npc.class.spells.mod]) + npc.proficiency}` 
-        + `\n Level  Slots  Spells`
-        for (let slotLevel in npc.spells) {
-            if (npc.spells[slotLevel][0]){
-                npcStr += `\n  ${slotLevel}      ${npc.spellSlots[slotLevel]}      ${npc.spells[slotLevel][0]}`
-                if (!npc.spells[slotLevel][1]) continue
-                for (let i=1; i<npc.spells[slotLevel].length; i++) {
-                    npcStr += `, ${npc.spells[slotLevel][i]}`
-                    if ((i % 3) == 0) {
-                        npcStr += `${(npc.spells[slotLevel][i+1])?'\n                '+npc.spells[slotLevel][++i]:''}`
-                    }
-                }
-            }
-        }
-    }
-    console.log('\n'+npcStr)
+    console.log(npcStr)
 
     // TODO: write to file the log string too
     // TODO: name file lv_#_race_class and check for duplicates, increment a _# suffix
@@ -593,4 +503,93 @@ function getRandom(max) { // shorthand for getting a random int 0 to max-1
 
 function modifier(num) { // shorthand for converting an attribute score to its modifier bonus
     return Math.floor(num / 2) - 5
+}
+
+function printNPC() {
+    // build output string
+    npcStr = ''
+
+    // main stats
+    npcStr += ` ${npc.race.name} ${(npc.subrace)?'('+npc.subrace.name+')' : ''} ${npc.class.name} ${(npc.subclass)?'('+npc.subclass.name+')' : ''}    Level: ${npc.level}\n`
+            + `\n Str: ${npc.attributes.strength}  ${(npc.attributes.strength<10)?' ':''} Save: ${npc.saves.strength}${(npc.saves.strength >= 10 || npc.saves.strength < 0)?'      ':'       '}HP: ${npc.HP}`
+            + `\n Dex: ${npc.attributes.dexterity} ${(npc.attributes.dexterity<10)?' ':''}  Save: ${npc.saves.dexterity}${(npc.saves.dexterity >= 10 || npc.saves.dexterity < 0)?'      ':'       '}AC: ${npc.AC}`
+            + `\n Con: ${npc.attributes.constitution} ${(npc.attributes.constitution<10)?' ':''}  Save: ${npc.saves.constitution}${(npc.saves.constitution >= 10 || npc.saves.constitution < 0)?'      ':'       '}Proficiency: ${npc.proficiency}`
+            + `\n Int: ${npc.attributes.intelligence} ${(npc.attributes.intelligence<10)?' ':''}  Save: ${npc.saves.intelligence}${(npc.saves.intelligence >= 10 || npc.saves.intelligence < 0)?'      ':'       '}Initiative: ${npc.initiative}`
+            + `\n Wis: ${npc.attributes.wisdom}  ${(npc.attributes.wisdom<10)?' ':''} Save: ${npc.saves.wisdom}${(npc.saves.wisdom >= 10 || npc.saves.wisdom < 0)?'      ':'       '}Speed: ${npc.speed}`
+            + `\n Cha: ${npc.attributes.charisma} ${(npc.attributes.charisma<10)?' ':''}  Save: ${npc.saves.charisma}${(npc.saves.charisma >= 10 || npc.saves.charisma < 0)?'      ':'       '}Size: ${npc.size}`
+            + '\n'
+
+    // languages
+    let langStr = ''
+    for (let language of npc.languages) {
+        langStr += `${language},`
+    }
+    langStr = langStr.split(',')
+    langStr.pop()
+    langStr = langStr.join(', ')
+    npcStr += `\n Languages:\n ${langStr}\n`
+
+    // features
+    npcStr += `\n Features: `
+    for (let i=0; i<npc.features.length; i++) {
+        npcStr += `${npc.features[i]?'\n '+npc.features[i]:''}`+
+            `${(npc.features[++i])?', '+npc.features[i]:''}`+
+            `${(npc.features[++i])?', '+npc.features[i]:''}`+
+            `${(npc.features[++i])?', '+npc.features[i]:''}`
+    }
+    
+    // subclass features
+    if (npc.subclass) {
+        npcStr += '\n\n Subclass Features:\n '
+        let subStr = []
+        let i = 0
+        for (let key in npc.subclass.features) {
+            if (npc.level >= key){
+                subStr.push(`${npc.subclass.features[key]?npc.subclass.features[key]:''}`)
+                if (((i+1) % 2) == 0) {
+                    subStr[i] += '\n '
+                    i++
+                }
+                else {
+                    subStr[i++] += ', '
+                }
+            }
+        }
+        subStr[i-1] = subStr[i-1].replace(',','')
+        npcStr += subStr.join('')
+    }
+
+    // skills
+    npcStr += `\n\n                Skills:`
+    for (let i=0; i<npc.skillScores.length/2; i++) {
+        let gap = ''
+        for (let j=0; j<20-npc.skillScores[i].name.split('').length; j++) {
+            gap += ' '
+        }
+        if (npc.skillScores[i].bonus >= 0) {
+            gap += ' '
+        }
+        npcStr += `\n ${npc.skillScores[i].name} : ${npc.skillScores[i].bonus} ${gap} ${npc.skillScores[i+(npc.skillScores.length/2)].name} : ${npc.skillScores[i+(npc.skillScores.length/2)].bonus}`
+    }
+
+    // TODO: refactor how to display spells
+
+    if (npc.spells[0][0] || npc.spells[1][0]) {
+        npcStr += `\n\n Spells: (${npc.class.spells.mod}) Attack: ${modifier(npc.attributes[npc.class.spells.mod]) + npc.proficiency} DC: ${8 + modifier(npc.attributes[npc.class.spells.mod]) + npc.proficiency}` 
+        + `\n Level  Slots  Spells`
+        for (let slotLevel in npc.spells) {
+            if (npc.spells[slotLevel][0]){
+                npcStr += `\n  ${slotLevel}      ${npc.spellSlots[slotLevel]}      ${npc.spells[slotLevel][0]}`
+                if (!npc.spells[slotLevel][1]) continue
+                for (let i=1; i<npc.spells[slotLevel].length; i++) {
+                    npcStr += `, ${npc.spells[slotLevel][i]}`
+                    if ((i % 3) == 0) {
+                        npcStr += `${(npc.spells[slotLevel][i+1])?'\n                '+npc.spells[slotLevel][++i]:''}`
+                    }
+                }
+            }
+        }
+    }
+    // console.log('\n'+npcStr)
+    return npcStr
 }
