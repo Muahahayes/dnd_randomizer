@@ -295,7 +295,7 @@ function rollClass() {
 }
 
 function rollStats() {
-
+    let priorities = (npc.subclass && npc.subclass.priorities)?npc.subclass.priorities:npc.class.priorities
     // rollAtt(), assign the array based on class's priorities
     let att = []
     for (let i=0; i<6; i++) {
@@ -306,7 +306,7 @@ function rollStats() {
                 else return -1
             })
     console.log(att)
-    for (let stat of npc.class.priorities) {
+    for (let stat of priorities) {
         npc.attributes[stat] = att.pop()
     }
     
@@ -315,21 +315,21 @@ function rollStats() {
     let bonused = []
     for (let attribute in npc.race.scores) {
         if (attribute == 'any2') {
-            if (!bonused.includes(npc.class.priorities[0])){
-                npc.attributes[npc.class.priorities[0]]++
-                npc.attributes[npc.class.priorities[1]]++
+            if (!bonused.includes(priorities[0])){
+                npc.attributes[priorities[0]]++
+                npc.attributes[priorities[1]]++
             }
             else{
-                npc.attributes[npc.class.priorities[1]]++
-                npc.attributes[npc.class.priorities[2]]++
+                npc.attributes[priorities[1]]++
+                npc.attributes[priorities[2]]++
             }
         }
         else if (attribute == 'any') {
-            if (!bonused.includes(npc.class.priorities[0])){
-                npc.attributes[npc.class.priorities[0]]++
+            if (!bonused.includes(priorities[0])){
+                npc.attributes[priorities[0]]++
             }
             else{
-                npc.attributes[npc.class.priorities[1]]++
+                npc.attributes[priorities[1]]++
             }
         }
         else {
@@ -348,35 +348,35 @@ function rollStats() {
     let ASI = npc.features.filter((feature) => {return (feature == 'ASI')})
     npc.features = npc.features.filter((feature) => {return (feature != 'ASI')})
     for (let i=0; i<ASI.length; i++) {
-        if (npc.attributes[npc.class.priorities[0]] >= 20) {
-            if (npc.attributes[npc.class.priorities[1]] >= 20) {
+        if (npc.attributes[priorities[0]] >= 20) {
+            if (npc.attributes[priorities[1]] >= 20) {
                 if (!npc.feats) npc.feats = []
                 npc.feats.push(info[1][getRandom(info[1].length)])
             }
-            else if (npc.attributes[npc.class.priorities[1]] % 2 == 1) {
-                npc.attributes[npc.class.priorities[1]]++
-                npc.attributes[npc.class.priorities[2]]++
+            else if (npc.attributes[priorities[1]] % 2 == 1) {
+                npc.attributes[priorities[1]]++
+                npc.attributes[priorities[2]]++
             }
             else {
-                npc.attributes[npc.class.priorities[1]] += 2
+                npc.attributes[priorities[1]] += 2
             }
         }
-        else if (npc.attributes[npc.class.priorities[0]] % 2 == 1) {
-            npc.attributes[npc.class.priorities[0]]++
-            if (npc.attributes[npc.class.priorities[1]] % 2 == 1) {
-                npc.attributes[npc.class.priorities[1]]++
+        else if (npc.attributes[priorities[0]] % 2 == 1) {
+            npc.attributes[priorities[0]]++
+            if (npc.attributes[priorities[1]] % 2 == 1) {
+                npc.attributes[priorities[1]]++
             }
             else {
-                if (npc.attributes[npc.class.priorities[2]] % 2 == 1) {
-                    npc.attributes[npc.class.priorities[2]]++
+                if (npc.attributes[priorities[2]] % 2 == 1) {
+                    npc.attributes[priorities[2]]++
                 }
                 else {
-                    npc.attributes[npc.class.priorities[1]]++
+                    npc.attributes[priorities[1]]++
                 }
             }
         }
         else {
-            npc.attributes[npc.class.priorities[0]] += 2
+            npc.attributes[priorities[0]] += 2
         }
     }
 
@@ -529,6 +529,14 @@ function printNPC() {
     langStr = langStr.join(', ')
     npcStr += `\n Languages:\n ${langStr}\n`
 
+    // class extras
+    if (npc.class.extra) {
+        for (let extra in npc.class.extra) {
+            npcStr += `\n ${extra}: ${npc.class.extra[extra][npc.level-1]}`
+        }
+        npcStr += '\n'
+    }
+
     // features
     npcStr += `\n Features: `
     for (let i=0; i<npc.features.length; i++) {
@@ -575,12 +583,14 @@ function printNPC() {
     // TODO: refactor how to display spells
 
     if (npc.spells[0][0] || npc.spells[1][0]) {
-        npcStr += `\n\n Spells: (${npc.class.spells.mod}) Attack: ${modifier(npc.attributes[npc.class.spells.mod]) + npc.proficiency} DC: ${8 + modifier(npc.attributes[npc.class.spells.mod]) + npc.proficiency}` 
-        + `\n Level  Slots  Spells`
+        npcStr += `\n\n Spells: (${(npc.class.spells)?npc.class.spells.mod:"Intelligence"})`
+                        +` Attack: ${modifier(npc.attributes[(npc.class.spells)?npc.class.spells.mod:"intelligence"]) + npc.proficiency}`
+                        +` DC: ${8 + modifier(npc.attributes[(npc.class.spells)?npc.class.spells.mod:"intelligence"]) + npc.proficiency}` 
+                        + `\n Level  Slots  Spells`
         for (let slotLevel in npc.spells) {
             if (npc.spells[slotLevel][0]){
-                npcStr += `\n  ${slotLevel}      ${npc.spellSlots[slotLevel]}      ${npc.spells[slotLevel][0]}`
-                if (!npc.spells[slotLevel][1]) continue
+                npcStr += `\n  ${slotLevel}      ${(npc.spellSlots)?npc.spellSlots[slotLevel]:'0'}      ${(npc.spells)?npc.spells[slotLevel][0]:''}`
+                if (!npc.spells || !npc.spells[slotLevel][1]) continue
                 for (let i=1; i<npc.spells[slotLevel].length; i++) {
                     npcStr += `, ${npc.spells[slotLevel][i]}`
                     if ((i % 3) == 0) {

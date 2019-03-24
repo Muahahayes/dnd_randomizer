@@ -82,6 +82,11 @@
                 "Primal Champion"
             ]
         ],
+        "extra":{
+            "Rages":[2,2,3,3,3,4,4,4,4,4,4,5,5,5,5,5,6,6,6,"unlimited"],
+            "Rage Damage":["+2","+2","+2","+2","+2","+2","+2","+2","+3","+3",
+                            "+3","+3","+3","+3","+3","+4","+4","+4","+4","+4"]
+        },
         "sublvl":3,
         "subclass":[
             {
@@ -111,6 +116,102 @@
                     {
                         "name":"Wolf"
                     }
+                ]
+            }
+        ]
+    },
+    {
+        "name":"Rogue",
+        "hp":8,
+        "ac":11,
+        "maxDex":null,
+        "saves":[
+            "dexterity",
+            "intelligence"
+        ],
+        "priorities":[
+            "dexterity",
+            "charisma",
+            "intelligence",            
+            "constitution",
+            "wisdom",
+            "strength"            
+        ],
+        "skills":[
+            4,
+            "Acrobatics",
+            "Athletics",
+            "Deception",
+            "Insight",
+            "Intimidation",
+            "Investigation", 
+            "Performance", 
+            "Perception",
+            "Persuasion",
+            "Sleight of Hand",
+            "Stealth"
+        ],
+        "features":[
+            ["Expertise", "Sneak Attack", "Thieves' Cant"],
+            ["Cunning Action"],
+            [],
+            ["ASI"],
+            ["Uncanny Dodge"],
+            [],
+            ["Evasion"],
+            ["ASI"],
+            [],
+            ["ASI"],
+            ["Reliable Talent"],
+            ["ASI"],
+            [],
+            ["Blindsense"],
+            ["Sippery Mind"],
+            ["ASI"],
+            [],
+            ["Elusive"],
+            ["ASI"],
+            ["Stroke of Luck"]
+        ],
+        "extra":{
+            "Sneak Attack":["1d6","1d6","2d6","2d6","3d6","3d6","4d6","4d6","5d6","5d6",
+                            "6d6","6d6","7d6","7d6","8d6","8d6","9d6","9d6","10d6","10d6"]
+        },
+        "sublvl":3,
+        "subclass":[
+            {
+                "name":"Thief",
+                "features":{
+                    "3":"Fast Hands, Second Story Work",
+                    "9":"Supreme Sneak",
+                    "13":"Use Magic Device",
+                    "17":"Theif's Reflexes"
+                }
+            },
+            {
+                "name":"Assassin",
+                "features":{
+                    "3":"Bonus Proficiencies (Disguise Kit, Poisoner's Kit), Assassinate",
+                    "9":"Infiltration Expertise",
+                    "13":"Imposter",
+                    "17":"Death Strike"
+                }
+            },
+            {
+                "name":"Arcane Trickster",
+                "features":{
+                    "3":"Mage Hand Legerdemain",
+                    "9":"Magical Ambush",
+                    "13":"Versatile Trickster",
+                    "17":"Spell Thief"
+                },
+                "priorities":[
+                    "dexterity",
+                    "intelligence",
+                    "charisma",            
+                    "constitution",
+                    "wisdom",
+                    "strength"            
                 ]
             }
         ]
