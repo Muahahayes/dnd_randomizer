@@ -1,9 +1,9 @@
 let fs = require('fs')
-let weapons = JSON.parse(fs.readFileSync('./weapons.json', 'utf8'))
-let effects = JSON.parse(fs.readFileSync('./effects.json', 'utf8'))
-let details = JSON.parse(fs.readFileSync('./details.json', 'utf8'))
-let armors = JSON.parse(fs.readFileSync('./armors.json', 'utf8'))
-let miscs = JSON.parse(fs.readFileSync('./misc.json', 'utf8'))
+let weapons = JSON.parse(fs.readFileSync('./loot/weapons.json', 'utf8'))
+let effects = JSON.parse(fs.readFileSync('./loot/effects.json', 'utf8'))
+let details = JSON.parse(fs.readFileSync('./loot/details.json', 'utf8'))
+let armors = JSON.parse(fs.readFileSync('./loot/armors.json', 'utf8'))
+let miscs = JSON.parse(fs.readFileSync('./loot/misc.json', 'utf8'))
 let effectMod = 1
 let curseMod = 0
 

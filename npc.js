@@ -1,8 +1,8 @@
 const fs = require('fs')
-const races = JSON.parse(fs.readFileSync('./race.json','utf8'))
-const clazzes = JSON.parse(fs.readFileSync('./class.json','utf8'))
-const info = JSON.parse(fs.readFileSync('./info.json','utf8'))
-const spells = JSON.parse(fs.readFileSync('./spells.json','utf8'))
+const races = JSON.parse(fs.readFileSync('./npc/race.json','utf8'))
+const clazzes = JSON.parse(fs.readFileSync('./npc/class.json','utf8'))
+const info = JSON.parse(fs.readFileSync('./npc/info.json','utf8'))
+const spells = JSON.parse(fs.readFileSync('./npc/spells.json','utf8'))
 
 // args [minlevel, maxlevel, class, race, subclass] randomize any not given
 if (process.argv[2] && process.argv[2].includes('h')) {
@@ -239,12 +239,14 @@ function rollClass() {
     // TODO: warlock's pact of the tome uses any class cantrips
     if (npc.subclass) {
         if (npc.subclass.spells) {
+            let spellClass = (spells[npc.class.name])?npc.class.name:'wizard'
             for (let spell of npc.subclass.spells) {
                 if (spell.spell == 'cantrip') {
                     // roll cantrip to put in npc.spells
-                    let cantrip = spells.wizard[0][getRandom(spells.wizard[0].length)]
+                    
+                    let cantrip = spells[spellClass][0][getRandom(spells.wizard[0].length)]
                     while (checkSpells.includes(cantrip)) {
-                        cantrip = spells.wizard[0][getRandom(spells.wizard[0].length)]
+                        cantrip = spells[spellClass][0][getRandom(spells.wizard[0].length)]
                     }
                     npc.spells[0].push(cantrip)
                     checkSpells.push(cantrip)
