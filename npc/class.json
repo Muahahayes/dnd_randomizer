@@ -99,7 +99,7 @@
                 }
             },
             {
-                "name":"Totem Warrior",
+                "name":"Totem-Warrior",
                 "features":{
                     "3":"Spirit Seeker",
                     "6":"Aspect of the Beast",
@@ -198,7 +198,7 @@
                 }
             },
             {
-                "name":"Arcane Trickster",
+                "name":"Arcane-Trickster",
                 "features":{
                     "3":"Mage Hand Legerdemain",
                     "9":"Magical Ambush",

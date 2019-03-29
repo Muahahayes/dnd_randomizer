@@ -56,7 +56,7 @@ function rollNPC() {
     // TODO: rollWeapon()
 
     // obj output
-    console.log(npc)
+    //console.log(npc)
     console.log()
 
     // build output string
@@ -65,6 +65,8 @@ function rollNPC() {
     console.log(npcStr)
 
     // TODO: write to file the log string too
+    // TODO: option to write obj as JSON file
+    // TODO: make script to do printNPC to a given npc's JSON file
     // TODO: name file lv_#_race_class and check for duplicates, increment a _# suffix
 
 }
@@ -125,7 +127,7 @@ function rollRace() {
 }
 
 function rollClass() {
-    // TODO: rogue, fighter, wizard, ranger,   warlock, cleric, sorceror, bard, monk
+    // TODO: fighter, wizard, ranger,   warlock, cleric, sorceror, bard, monk
     // check if class arg
     // check if class exists, if not log error and roll random class
     if (process.argv[4] && process.argv[4] != 'r') {
@@ -304,7 +306,6 @@ function rollClass() {
 
     if (npc.class.spells) {
         if (npc.class.spells.known) {
-            // TODO: limited rolls for classes with more slots than their 'known' spells
             let spellsKnown = npc.class.spells.known[npc.level-1]
             let spellClass = npc.class.name.toLowerCase()
             let i = 0
@@ -332,15 +333,12 @@ function rollClass() {
             }
         }
     }
-    // console.log(npc.spellSlots)
-    // console.log(npc.spells)
-    // console.log(npc.racialSpells)
 
 }
 
 function rollStats() {
     let priorities = (npc.subclass && npc.subclass.priorities)?npc.subclass.priorities:npc.class.priorities
-    // rollAtt(), assign the array based on class's priorities
+    // assign the array based on class's priorities
     let att = []
     for (let i=0; i<6; i++) {
         att.push(rollAtt())
@@ -349,7 +347,6 @@ function rollStats() {
                 if (a > b) return 1
                 else return -1
             })
-    console.log(att)
     for (let stat of priorities) {
         npc.attributes[stat] = att.pop()
     }
