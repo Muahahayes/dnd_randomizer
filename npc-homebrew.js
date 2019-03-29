@@ -9,7 +9,7 @@ let npc = require('./npc.js')
 if (process.argv[2] && process.argv[2].includes('h')) {
     console.log('---------------------------------------------------' +
                 '\n A D&D 5e character generator.' + 
-                '\n Usage: node npc.js # # c r s' +
+                '\n Usage: node npc-homebrew.js # # c r s' +
                 '\n No arguments will give a random character lv 1-20.' +
                 '\n Arguments:' +
                 '\n # = min and max level range.' +
