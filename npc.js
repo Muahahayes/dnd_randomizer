@@ -193,7 +193,7 @@ function rollClass() {
     // TODO: roll spells
     // first first, roll racial spells! racial cantrips are wizard
     // roll subclass spells first! Rule those out when rolling class spells
-    checkSpells = []
+    let checkSpells = []
     npc.spells = [[],[],[],[],[],[],[],[],[],[]]
     if (npc.class.spells) {
         npc.spellSlots = npc.class.spells.slots[npc.level - 1]
@@ -259,6 +259,35 @@ function rollClass() {
                 }
             }
         }
+        if (npc.subclass.spellClass) {
+            let spellClass = npc.subclass.spellClass
+            if (npc.subclass.known) {
+                let spellsKnown = npc.subclass.known[npc.level-1]
+                let i = 0
+                for (let j=0; j<spellsKnown; j++) {
+                    let spell = spells[spellClass][i][getRandom(spells[spellClass][i].length)]
+                    while (checkSpells.includes(spell)) {
+                        spell = spells[spellClass][i][getRandom(spells[spellClass][i].length)]
+                    }
+                    npc.spells[i].push(spell)
+                    checkSpells.push(spell) 
+                    i++
+                    if (i >= npc.spellSlots.length) i = 0
+                }
+            }
+            else {
+                for (let i=0; i<npc.spellSlots.length; i++) {
+                    for (let j=0; j<npc.spellSlots[i]; j++) {
+                        let spell = spells[spellClass][i][getRandom(spells[spellClass][i].length)]
+                        while (checkSpells.includes(spell)) {
+                            spell = spells[spellClass][i][getRandom(spells[spellClass][i].length)]
+                        }
+                        npc.spells[i].push(spell)
+                        checkSpells.push(spell)
+                    }
+                }
+            }
+        }
         if (npc.sub) {
             if (npc.sub.spells) {
                 for (let level in npc.sub.spells) {
@@ -276,6 +305,19 @@ function rollClass() {
     if (npc.class.spells) {
         if (npc.class.spells.known) {
             // TODO: limited rolls for classes with more slots than their 'known' spells
+            let spellsKnown = npc.class.spells.known[npc.level-1]
+            let spellClass = npc.class.name.toLowerCase()
+            let i = 0
+            for (let j=0; j<spellsKnown; j++) {
+                let spell = spells[spellClass][i][getRandom(spells[spellClass][i].length)]
+                while (checkSpells.includes(spell)) {
+                    spell = spells[spellClass][i][getRandom(spells[spellClass][i].length)]
+                }
+                npc.spells[i].push(spell)
+                checkSpells.push(spell) 
+                i++
+                if (i >= npc.spellSlots.length) i = 0
+            }
         }
         else {
             for (let i=0; i<npc.spellSlots.length; i++) {
