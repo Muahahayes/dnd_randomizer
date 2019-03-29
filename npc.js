@@ -1,8 +1,8 @@
 let filenames = [
-    './homebrew/race.json',
-    './homebrew/class.json',
-    './homebrew/info.json',
-    './homebrew/spells.json'
+    './npc/race.json',
+    './npc/class.json',
+    './npc/info.json',
+    './npc/spells.json'
 ]
 let npc = require('./npc.js')
 
