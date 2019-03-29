@@ -61,6 +61,8 @@ function rollNPC(filenames) {
     // TODO: option to write obj as JSON file
     // TODO: make script to do printNPC to a given npc's JSON file
     // TODO: name file lv_#_race_class and check for duplicates, increment a _# suffix
+    // TODO: make node server output in browser
+    // TODO: make the node server output look similar to a 5e character sheet
 
 }
 

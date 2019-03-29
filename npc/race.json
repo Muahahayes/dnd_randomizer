@@ -108,5 +108,40 @@
             "Darkvision",
             "Fey Ancestry"
         ]
+    },
+    {
+        "name":"Halfling",
+        "score":{
+            "dexterity":2
+        },
+        "size":"Small",
+        "speed":25,
+        "languages":[
+            "Common",
+            "Halfling"
+        ],
+        "features":[
+            "Lucky",
+            "Brave",
+            "Halfling Nimbleness"
+        ],
+        "subraces":[
+            {
+                "score":{
+                    "charisma":1
+                },
+                "features":[
+                    "Naturally Stealthy"
+                ]
+            },
+            {
+                "score":{
+                    "constitution":1
+                },
+                "features":[
+                    "Stout Resilience"
+                ]
+            }
+        ]
     }
 ]

@@ -4,7 +4,7 @@ let filenames = [
     './homebrew/info.json',
     './homebrew/spells.json'
 ]
-let npc = require('./npc.js')
+let npc = require('./npc-source.js')
 
 if (process.argv[2] && process.argv[2].includes('h')) {
     console.log('---------------------------------------------------' +
