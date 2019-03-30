@@ -418,6 +418,7 @@ function rollStats() {
 
 
     // roll hp and ac and initiative
+    if (!npc.class.ac) npc.class.ac =  10
     if (npc.class.maxDex && (npc.class.maxDex <= modifier(npc.attributes.dexterity) || npc.class.maxDex === 0)){
         npc.AC = npc.class.ac + npc.class.maxDex
     }
@@ -503,7 +504,7 @@ function rollStats() {
     // calculate saves
     npc.saves = {}
     for (let attribute in npc.attributes) {
-        if (npc.class.saves.includes(attribute)) {
+        if (npc.class.saves && npc.class.saves.includes(attribute)) {
             npc.saves[attribute] = modifier(npc.attributes[attribute]) + npc.proficiency
         }
         else {

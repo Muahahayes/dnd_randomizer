@@ -1,0 +1,35 @@
+{
+    "name": "" required,
+    "hp": # required,
+    "ac": # optional,
+    "maxDex": # optional,
+    "saves": [""] optional,
+    "priorities": [""] required,
+    "skills": [#,"",...,""] required,
+    "features": [[""]] required,
+    "extra": {[]} optional,
+    "spells":{ optional
+        "mod": "" required,
+        "known": [#] optional,
+        "slots": [[#]] required
+    },
+    "sublvl": # required,
+    "subclass": [{ required (unless sublvl is higher than lvl)
+        "name": "" required,
+        "features": {} required,
+        "priorities": [""] optional,
+        "spellClass": "" optional,
+        "slots": [[#]] optional, (unless spellClass)
+        "known": [#] optional, (unless spellClass)
+        "spells": [{ optional
+            "spell": "" required,
+            "lvl": # required
+        }] 
+        "sub": [{ optional
+            "name": "" required,
+            "spells": {
+                "#": [""] required
+            }
+        }] 
+    }]
+}

@@ -1,0 +1,8 @@
+[
+    [""] required (languages),
+    [""] required (feats),
+    [{ required
+        "name": "" required,
+        "mod": "" required
+    }] (skills)
+]
