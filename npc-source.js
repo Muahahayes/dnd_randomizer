@@ -198,7 +198,6 @@ function rollClass() {
     else if (npc.subclass && npc.subclass.slots) {
         npc.spellSlots = npc.subclass.slots[npc.level - 1]
     }
-    npc.racialSpells = []
     if (npc.race.spells) {
         for (let spell of npc.race.spells) {
             if (spell.spell == 'cantrip') {
@@ -209,7 +208,7 @@ function rollClass() {
             }
             else {
                 if (npc.level >= spell.lvl) {
-                    npc.racialSpells.push(spell.spell)
+                    npc.spells[spell.slot].push(spell.spell)
                     checkSpells.push(spell.spell)
                 }
             }
@@ -225,7 +224,7 @@ function rollClass() {
             }
             else {
                 if (npc.level >= spell.lvl) {
-                    npc.racialSpells.push(spell.spell)
+                    npc.spells[spell.slot].push(spell.spell)
                     checkSpells.push(spell.spell)
                 }
             }
@@ -579,19 +578,19 @@ function printNPC() {
     for (let i=0; i<npc.features.length; i++) {
         npcStr += `${npc.features[i]?'\n '+npc.features[i]:''}`+
             `${(npc.features[++i])?', '+npc.features[i]:''}`+
-            `${(npc.features[++i])?', '+npc.features[i]:''}`+
-            `${(npc.features[++i])?', '+npc.features[i]:''}`
+            `${(npc.features[++i])?', '+npc.features[i]:''}`//+
+            //`${(npc.features[++i])?', '+npc.features[i]:''}`
     }
     
     // subclass features
-    if (npc.subclass) {
+    if (npc.subclass) { // is an object so must be done differently
         npcStr += '\n\n Subclass Features:\n '
         let subStr = []
         let i = 0
         for (let key in npc.subclass.features) {
             if (npc.level >= key){
                 subStr.push(`${npc.subclass.features[key]?npc.subclass.features[key]:''}`)
-                if (((i+1) % 2) == 0) {
+                if (((i+1) % 3) == 0) {
                     subStr[i] += '\n '
                     i++
                 }
@@ -600,7 +599,12 @@ function printNPC() {
                 }
             }
         }
-        //subStr[i-1] = subStr[i-1].replace(',','')
+        if (subStr[subStr.length-1].endsWith(', ')) {
+            let subsubStr = subStr[subStr.length-1].split('')
+            subsubStr.pop()
+            subsubStr.pop()
+            subStr[subStr.length-1] = subsubStr.join('')
+        }
         npcStr += subStr.join('')
     }
 
@@ -630,10 +634,11 @@ function printNPC() {
                 if (!npc.spells || !npc.spells[slotLevel][1]) continue
                 for (let i=1; i<npc.spells[slotLevel].length; i++) {
                     npcStr += `, ${npc.spells[slotLevel][i]}`
-                    if ((i % 3) == 0) {
+                    if ((i % 2) == 0) {
                         npcStr += `${(npc.spells[slotLevel][i+1])?'\n                '+npc.spells[slotLevel][++i]:''}`
                     }
                 }
+                npcStr += `\n`
             }
         }
     }

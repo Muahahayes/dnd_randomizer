@@ -68,16 +68,19 @@
                 },
                 "spells":[
                     {
-                        "spell":"dancing lights",
-                        "lvl":1
+                        "spell":"Dancing Lights",
+                        "lvl":1,
+                        "slot":0
                     },
                     {   
-                        "spell":"faerie fire",
-                        "lvl":3
+                        "spell":"Faerie Fire",
+                        "lvl":3,
+                        "slot":1
                     },
                     {   
-                        "spell":"darkness",
-                        "lvl":5
+                        "spell":"Darkness",
+                        "lvl":5,
+                        "slot":2
                     }
                 ],
                 "features":[
@@ -127,6 +130,7 @@
         ],
         "subraces":[
             {
+                "name": "Lightfoot",
                 "score":{
                     "charisma":1
                 },
@@ -135,11 +139,235 @@
                 ]
             },
             {
+                "name": "Stout",
                 "score":{
                     "constitution":1
                 },
                 "features":[
                     "Stout Resilience"
+                ]
+            }
+        ]
+    },
+    {
+        "name":"Dwarf",
+        "score":{
+            "constitution":2
+        },
+        "size":"Medium",
+        "speed":25,
+        "languages":[
+            "Common",
+            "Dwarvish"
+        ],
+        "features":[
+            "Darkvision",
+            "Dwarven Resilience",
+            "Dwarven Combat Training",
+            "Artisan Tool Proficiency",
+            "Stonecunning"
+        ],
+        "subraces":[
+            {
+                "name": "Hill",
+                "scores":{
+                    "wisdom": 1
+                },
+                "features":[
+                    "Dwarven Toughness"
+                ]
+            },
+            {
+                "name": "Mountain",
+                "scores":{
+                    "strength": 2
+                },
+                "features":[
+                    "Dwarven Armor Training"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Gnome",
+        "scores":{
+            "intelligence":2
+        },
+        "size":"Small",
+        "speed":25,
+        "languages":[
+            "Common",
+            "Gnomish"
+        ],
+        "features":[
+            "Darkvision",
+            "Gnome Cunning"
+        ],
+        "subraces":[
+            {
+                "name":"Forest",
+                "scores":{
+                    "dexterity":1
+                },
+                "spells":[
+                    {
+                        "spell":"Minor Illusion",
+                        "lvl":0,
+                        "slot":0
+                    }
+                ],
+                "features":[
+                    "Speak with Small Beasts"
+                ]
+            },
+            {
+                "name":"Rock",
+                "scores":{
+                    "constitution":1
+                },
+                "features":[
+                    "Artificer's Lore",
+                    "Tinker"
+                ]
+            }
+        ]
+    },
+    {
+        "name":"Half-Orc",
+        "scores":{
+            "strength":2,
+            "constitution":1
+        },
+        "size":"Medium",
+        "speed":30,
+        "languages":[
+            "Common",
+            "Orc"
+        ],
+        "features":[
+            "Darkvision",
+            "Relentless Endurance",
+            "Savage Attacks"
+        ],
+        "skills":[
+            "Intimidation"
+        ]
+    },
+    {
+        "name":"Tiefling",
+        "scores":{
+            "intelligence":1,
+            "charisma":2
+        },
+        "size":"Medium",
+        "speed":30,
+        "languages":[
+            "Common",
+            "Infernal"
+        ],
+        "features":[
+            "Darkvision",
+            "Hellish Resistance"
+        ],
+        "spells":[
+            {
+                "spell":"Thaumaturgy",
+                "lvl":1,
+                "slot":0
+            },
+            {
+                "spell":"Hellish Rebuke",
+                "lvl":3,
+                "slot":2
+            },
+            {
+                "spell":"Darkness",
+                "lvl":5,
+                "slot":2
+            }
+        ]
+    },
+    {
+        "name": "Dragonborn",
+        "scores":{
+            "strength": 2,
+            "charisma": 1
+        },
+        "size":"Medium",
+        "speed":30,
+        "languages":[
+            "Common",
+            "Draconic"
+        ],
+        "subraces":[
+            {
+                "name":"Black",
+                "features":[
+                    "Acid Breath",
+                    "Acid Resistance"
+                ]
+            },
+            {
+                "name":"Blue",
+                "features":[
+                    "Lightning Breath",
+                    "Lightning Resistance"
+                ]
+            },
+            {
+                "name":"Brass",
+                "features":[
+                    "Fire Breath",
+                    "Fire Resistance"
+                ]
+            },
+            {
+                "name":"Bronze",
+                "features":[
+                    "Lightning Breath",
+                    "Lightning Resistance"
+                ]
+            },
+            {
+                "name":"Copper",
+                "features":[
+                    "Acid Breath",
+                    "Acid Resistance"
+                ]
+            },
+            {
+                "name":"Gold",
+                "features":[
+                    "Fire Breath",
+                    "Fire Resistance"
+                ]
+            },
+            {
+                "name":"Green",
+                "features":[
+                    "Poison Breath",
+                    "Poison Resistance"
+                ]
+            },
+            {
+                "name":"Red",
+                "features":[
+                    "Fire Breath",
+                    "Fire Resistance"
+                ]
+            },
+            {
+                "name":"Silver",
+                "features":[
+                    "Cold Breath",
+                    "Cold Resistance"
+                ]
+            },
+            {
+                "name":"White",
+                "features":[
+                    "Cold Breath",
+                    "Cold Resistance"
                 ]
             }
         ]
