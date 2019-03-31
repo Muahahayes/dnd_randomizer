@@ -154,6 +154,31 @@ function rollClass() {
                 if (Array.isArray(feature)) {
                     npc.features.push(feature[getRandom(feature.length)])
                 }
+                else if (feature == 'Fighting Style') {
+                    let style = npc.class.fighting_style[getRandom(npc.class.fighting_style.length)]
+                    npc.class.style = style
+                    feature += ` (${style})`
+                    switch (style){
+                        case 'Defense':
+                            npc.class.ac += 1
+                            break;
+                        case 'Archery':
+                            npc.class.ac = 11
+                            npc.class.maxDex = null
+                            let dexI = npc.class.priorities.indexOf('dexterity')
+                            let first = npc.class.priorities[0]
+                            npc.class.priorities[0] = 'dexterity'
+                            npc.class.priorities[dexI] = first
+                            break;
+                        case 'Two-Weapon Fighting':
+                            npc.class.ac -= 2
+                            break;
+                        case 'Great Weapon Fighting':
+                            npc.class.ac -= 2
+                            break;
+                    }
+                    npc.features.push(feature)
+                }
                 else{
                     npc.features.push(feature)
                 }            
@@ -182,6 +207,50 @@ function rollClass() {
             }
             if (npc.subclass.sub) {
                 npc.sub = npc.subclass.sub[getRandom(npc.subclass.sub.length)]
+            }
+        }
+    }
+
+    // Fighter's additional fighting style
+    if (npc.subclass) {
+        let addStyle = false
+        let key = ''
+        for (let feature in npc.subclass.features) {
+            if (npc.subclass.features[feature].includes(', ')) npc.subclass.features[feature] = npc.subclass.features[feature].split(', ')
+            if (Array.isArray(npc.subclass.features[feature])) {
+                if (npc.subclass.features[feature].includes('Additional Fighting Style')) {
+                    addStyle = true
+                    key = feature
+                }
+            }
+            else {
+                if (npc.subclass.features[feature] == 'Additional Fighting Style') {
+                    addStyle = true
+                    key = feature
+                }
+            }
+        }
+        if (addStyle) {
+            let style = ''
+            let fighting_styles = ['Defense', 'Dueling', 'Protection']
+            if (npc.class.style == 'Great Weapon Fighting' || npc.class.style == 'Archery' || npc.class.style == 'Two-Weapon Fighting') {
+                style = 'Defense'
+            }
+            else {
+                style = fighting_styles[getRandom(fighting_styles.length)]
+                while (style == npc.class.style) {
+                    style = fighting_styles[getRandom(fighting_styles.length)]
+                }
+            }
+            if (style == 'Defense') {
+                npc.class.ac += 1
+            }
+            if (Array.isArray(npc.subclass.features[key])) {
+                npc.subclass.features[key][npc.subclass.features[key].indexOf('Additional Fighting Style')] += ` (${style})`
+                npc.subclass.features[key] = npc.subclass.features[key].join(', ')
+            }
+            else {
+                npc.subclass.features[key] += ` (${style})`
             }
         }
     }
@@ -380,6 +449,7 @@ function rollStats() {
     }
 
     // check for Ability Score Increase features and assign them using class stat priority
+    // TODO: add a chance of ASI rolling a feat instead, and make a switch statement for any stat changes some feats make
     let ASI = npc.features.filter((feature) => {return (feature == 'ASI')})
     npc.features = npc.features.filter((feature) => {return (feature != 'ASI')})
     for (let i=0; i<ASI.length; i++) {
@@ -414,11 +484,15 @@ function rollStats() {
             npc.attributes[priorities[0]] += 2
         }
     }
+    if (npc.features.includes("Primal Champion")) {
+        npc.attributes.strength += 4
+        npc.attributes.constitution += 4
+    }
 
 
     // roll hp and ac and initiative
     if (!npc.class.ac) npc.class.ac =  10
-    if (npc.class.maxDex && (npc.class.maxDex <= modifier(npc.attributes.dexterity) || npc.class.maxDex === 0)){
+    if (npc.class.maxDex != null && (npc.class.maxDex <= modifier(npc.attributes.dexterity) || npc.class.maxDex === 0)){
         npc.AC = npc.class.ac + npc.class.maxDex
     }
     else {
@@ -444,8 +518,12 @@ function rollStats() {
     if (npc.features.includes('Jack of all Trades')) {
         npc.initiative += Math.floor(npc.proficiency / 2)
     }
-    else if (npc.features.includes('Remarkable Athlete')) {
-        npc.initiative += Math.floor(npc.proficiency / 2)
+    else if (npc.subclass) {
+        for (let feature in npc.subclass.features) {
+            if (npc.subclass.features[feature].includes("Remarkable Athlete")) {
+                npc.initiative += Math.ceil(npc.proficiency / 2)
+            }
+        }
     }
 
 
@@ -496,6 +574,15 @@ function rollStats() {
         }
         else {
             skill.bonus = modifier(npc.attributes[skill.mod.toLowerCase()])
+            if (npc.subclass) {
+                for (let feature in npc.subclass.features) {
+                    if (npc.subclass.features[feature].includes("Remarkable Athlete")) {
+                        if (skill.mod.toLowerCase() == 'strength' || skill.mod.toLowerCase() == 'dexterity' || skill.mod.toLowerCase() == 'constitution') {
+                            skill.bonus += Math.ceil(npc.proficiency / 2)
+                        }
+                    }
+                }
+            }
         }
     }
     npc.skillScores = skillObjs

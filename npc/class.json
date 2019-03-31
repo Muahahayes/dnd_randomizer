@@ -242,6 +242,101 @@
         ]
     },
     {
+        "name":"Fighter",
+        "hp":10,
+        "ac":18,
+        "maxDex":0,
+        "saves":[
+            "strength",
+            "constitution"
+        ],
+        "priorities":[
+            "strength",
+            "constitution",
+            "dexterity",
+            "charisma",
+            "wisdom",
+            "intelligence"
+        ],
+        "fighting_style":[
+                    "Defense",
+                    "Dueling",
+                    "Great Weapon Fighting",
+                    "Protection",
+                    "Archery",
+                    "Two-Weapon Fighting"
+        ],
+        "features":[
+            [
+                "Fighting Style",
+                "Second Wind"
+            ],
+            [
+                "Action Surge"
+            ],
+            [],
+            [
+                "ASI"
+            ],
+            [
+                "Extra Attack"
+            ],
+            [
+                "ASI"
+            ],
+            [],
+            [
+                "ASI"
+            ],
+            [
+                "Indomitable"
+            ],
+            [],
+            [],
+            [
+                "ASI"
+            ],
+            [],
+            [
+                "ASI"
+            ],
+            [],
+            [
+                "ASI"
+            ],
+            [],
+            [],
+            [
+                "ASI"
+            ],
+            []
+        ],
+        "skills":[
+            2,
+            "Athletics",
+            "Acrobatics",
+			"Animal Handling",
+			"Insight",
+			"History",
+			"Intimidation",
+            "Perception",
+            "Survival"
+        ],
+        "sublvl":3,
+        "subclass":[
+            {
+                "name":"Champion",
+                "features":{
+                    "3":"Improved Critical",
+                    "7":"Remarkable Athlete",
+                    "10":"Additional Fighting Style",
+                    "15":"Superior Critical",
+                    "18":"Survivor"
+                }
+            }
+        ]
+    },
+    {
         "name":"Druid",
         "hp":8,
         "ac":11,
@@ -442,7 +537,7 @@
     {
         "name":"Paladin",
         "hp":10,
-        "ac":16,
+        "ac":18,
         "maxDex":0,
         "saves":[
             "charisma",
@@ -490,18 +585,19 @@
                 [0,4,3,3,3,2]
             ]
         },
+        "fighting_style":[
+                    "Defense",
+                    "Dueling",
+                    "Great Weapon Fighting",
+                    "Protection"
+        ],
         "features":[
             [
                 "Divine Sense",
                 "Lay on Hands"
             ],
             [
-                [
-                    "Fighting Style (Defense)",
-                    "Fighting Style (Dueling)",
-                    "Fighting Style (Great Weapon Fighting)",
-                    "Fighting Style (Protection)"
-                ],
+                "Fighting Style",
                 "Spellcasting",
                 "Divine Smite"
             ],
